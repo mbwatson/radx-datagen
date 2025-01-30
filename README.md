@@ -2,6 +2,8 @@
 
 ## 🚧 Development
 
+To develop both the `API` and `UI` simultaneously, we can spin up both.
+
 1. clone this repo & move into project root
 2. spin up development `api` and `ui` servers: `docker compose up`
 ```bash
@@ -31,3 +33,5 @@ ui-1   | 172.18.0.1 - - [30/Jan/2025 18:34:37] "GET /_reload-hash HTTP/1.1" 200 
 ```
 3. You now should be able to view the UI in your browser at [http://localhost:8855/](http://localhost:8855/)`
 and hit the API at [http://localhost:8888/](http://localhost:8888/).
+
+Note: To run _only_ the `API` or only the `UI`, one simply runs `docker compose up api` or `docker compose up ui`.
