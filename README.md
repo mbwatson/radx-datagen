@@ -2,41 +2,32 @@
 
 ## 🚧 Development
 
-1. clone this repo & move into project dir
-
-The API and UI are both Python apps that live in their own directories, `./api` and `./ui`.
-These instructions use [Pipenv](https://pipenv.pypa.io/en/latest/), but any virtualenv management tool works fine.
-
-2. API development
-  - change into `api` directory
-  - start virtual environment, `pipenv shell`
-  - install dependencies, `pipenv install`
-  - start dev server, `python app.py`
-
-3. UI development
-  - change into `ui` directory
-  - start virtual environment, `pipenv shell`
-  - install dependencies, `pipenv install`
-  - start dev server, `python app.py`
-
-4. You now should be able to view the UI in your browser at [http://localhost:8855/](http://localhost:8855/)`
-and hit the API at [http://localhost:8888/](http://localhost:8888/).
-
+1. clone this repo & move into project root
+2. spin up development `api` and `ui` servers: `docker compose up`
 ```bash
-$ python app.py
-Dash is running on http://127.0.0.1:8855/
-
- * Serving Flask app 'app'
- * Debug mode: on
+$ docker compose up
+WARN[0000] /home/matt/dev/renci/radx/radx-datagen/docker-compose.yaml: `version` is obsolete 
+[+] Running 2/0
+ ✔ Container radx-datagen-api-1  Created                                                                                0.0s 
+ ✔ Container radx-datagen-ui-1   Created                                                                                0.0s 
+Attaching to api-1, ui-1
+ui-1   |  * Serving Flask app 'app.py'
+ui-1   |  * Debug mode: off
+ui-1   | WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ui-1   |  * Running on all addresses (0.0.0.0)
+ui-1   |  * Running on http://127.0.0.1:8855
+ui-1   |  * Running on http://172.18.0.3:8855
+ui-1   | Press CTRL+C to quit
+ui-1   | 172.18.0.1 - - [30/Jan/2025 18:34:32] "GET /_reload-hash HTTP/1.1" 200 -
+ui-1   | 172.18.0.1 - - [30/Jan/2025 18:34:34] "GET /_reload-hash HTTP/1.1" 200 -
+api-1  |  * Serving Flask app 'api.py'
+api-1  |  * Debug mode: off
+api-1  | WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+api-1  |  * Running on all addresses (0.0.0.0)
+api-1  |  * Running on http://127.0.0.1:8888
+api-1  |  * Running on http://172.18.0.2:8888
+api-1  | Press CTRL+C to quit
+ui-1   | 172.18.0.1 - - [30/Jan/2025 18:34:37] "GET /_reload-hash HTTP/1.1" 200 -
 ```
-
-## 📦 Production
-
-We have included a Dockerfile to build a production app server image.
-
-1. build Docker image, `docker build -t radx-synth-datagen .`
-2. run container, `docker run --rm -p 80:8050 radx-synth-datagen`
-```bash
-$ docker run --rm -p 80:8855 radx-synth-datagen
-[2025-01-16 15:28:42 +0000] [1] [INFO] Starting gunicorn 23.0.0
-[2025-01-16 15:28:42 +0000] [1] [INFO] Listening at: http://0.0.0.0:8050 (1)
+3. You now should be able to view the UI in your browser at [http://localhost:8855/](http://localhost:8855/)`
+and hit the API at [http://localhost:8888/](http://localhost:8888/).
