@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  ui:
+    build: ./ui
+    ports:
+      - "8855:8855"  # Ensure this is correctly quoted as a string
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=8855
+      - FLASK_ENV=development
+    volumes:
+      - ./ui:/app/ui
+
+  api:
+    build: ./api
+    ports:
+      - "8888:8888"  # Ensure this is correctly quoted as a string
+    environment:
+      - FLASK_APP=api.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=8888
+      - FLASK_ENV=development
+    volumes:
+      - ./api:/app/api
