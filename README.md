@@ -41,4 +41,4 @@ Note: To run _only_ the API or only the UI, one simply runs `docker compose up a
 
 ## 🎁 Production
 
-There is a `docker-compose.prod.yaml` file for production deployment that will likely need modification, but we're not there yet.
+There is a `docker-compose.prod.yaml` file for production deployment that will likely need modification, but we're not there yet. To use it anyway, use `docker compose -f docker-compose.prod.yaml up`.

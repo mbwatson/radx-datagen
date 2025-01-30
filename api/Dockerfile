@@ -16,8 +16,8 @@ EXPOSE 8888
 # environment variables
 ENV FLASK_APP=api.py
 ENV FLASK_RUN_HOST=0.0.0.0
-ENV FLASK_RUN_PORT=8888
-ENV FLASK_ENV=production
+ENV FLASK_RUN_PORT=$UI_PORT
+ENV FLASK_ENV=$UI_ENV
 
 # go!
 CMD ["pipenv", "run", "flask", "run"]

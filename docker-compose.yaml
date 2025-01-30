@@ -3,24 +3,16 @@ version: "3.8"
 services:
   ui:
     build: ./ui
+    env_file: ".env"
     ports:
-      - "8855:8855"  # Ensure this is correctly quoted as a string
-    environment:
-      - FLASK_APP=app.py
-      - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=8855
-      - FLASK_ENV=development
+      - ${UI_PORT}:${UI_PORT}
     volumes:
       - ./ui:/app/ui
 
   api:
     build: ./api
+    env_file: ".env"
     ports:
-      - "8888:8888"  # Ensure this is correctly quoted as a string
-    environment:
-      - FLASK_APP=api.py
-      - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=8888
-      - FLASK_ENV=development
+      - ${API_PORT}:${API_PORT}
     volumes:
       - ./api:/app/api

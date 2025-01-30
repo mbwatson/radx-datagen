@@ -20,7 +20,9 @@ instance/
 *.sqlite3
 
 # Environment variables
-.env
+#
+# .env       # nothing secret in there yet
+#
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
