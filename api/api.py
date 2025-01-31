@@ -11,6 +11,16 @@ available_datasets = [{
     "url": f"http://localhost:8888/generate/{record['dataset_name']}",
 } for record in available_demos.to_dict(orient='records')]
 
+# curl -X GET http://localhost:8888/
+@app.route('/', methods=['GET'])
+def list_endpoints():
+    endpoints = {
+        "/": "This response.",
+        "/list_datasets": "List available datasets.",
+        "/generate/<string:dataset_name>/<int:count>": "Generate count records in dataset_name.",
+    }
+    return jsonify(endpoints), 200
+
 # curl -X GET http://localhost:8888/list_datasets
 @app.route('/list_datasets', methods=['GET'])
 def list_datasets():
