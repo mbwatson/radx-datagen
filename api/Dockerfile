@@ -2,23 +2,23 @@ FROM python:3.12
 
 WORKDIR /app
 
-# Copy the requirements file into the container
+# copy in requirements file
 COPY requirements.txt .
 
-# Install dependencies using pip
+# install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy your application files into the container
+# copy in application files
 COPY . .
 
-# Expose the necessary port
-EXPOSE ${API_PORT}
+# expose port
+EXPOSE ${UI_PORT}
 
-# Environment variables
+# environment variables
 ENV FLASK_APP=api.py
 ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_RUN_PORT=${API_PORT}
 ENV FLASK_ENV=${API_ENV}
 
-# Start the Flask app
+# go!
 CMD ["python", "-m", "flask", "run"]

@@ -50,4 +50,4 @@ def generate_data_no_count(dataset_name):
     return generate_data(dataset_name, 10)
 
 if __name__ == '__main__':
-   app.run(debug=True)
+   app.run(debug=True, host='0.0.0.0')

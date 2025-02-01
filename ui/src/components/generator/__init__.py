@@ -3,22 +3,26 @@ import dash_mantine_components as dmc
 import json
 import pandas
 import requests
-from src.components.generator.collection_select import collection_select
-from src.components.generator.cde_select import cde_select
+from .dataset_select import dataset_select
+from .form_selections import form_selections
+from .count_select import count_select
+from .generate_button import generate_button
+from .generated_data import generated_data
 
 generator_form = dmc.Container(
   [
     dmc.Fieldset(
-      legend='CDE Selection',
+      legend='Generation Parameters',
       children=[
-        collection_select,
-        cde_select,
+        dataset_select,
+        count_select,
+        generate_button,
       ],
       variant='transparent',
     ),
-    dcc.Store(id='selected-collection'),
-    dcc.Store(id='available-cdes'),
-    dcc.Store(id='selected-cdes'),
+    dcc.Store(id='available-datasets'),
+    dcc.Store(id='selected-dataset'),
+    dcc.Store(id='selected-count'),
   ],
   fluid=True,
   style={'margin': '1rem 0 0 0'},
@@ -26,12 +30,12 @@ generator_form = dmc.Container(
 
 # update selection summary
 @callback(
-  Output('form-selections', 'children'),
-  Input('selected-collection', 'data'),
-  Input('selected-cdes', 'data'),
+  Output('state-summary', 'children'),
+  Input('selected-dataset', 'data'),
+  Input('selected-count', 'data'),
 )
-def update_selections(collection, cde):
+def update_selection_summary(dataset, count):
   return json.dumps({
-    'collection': collection,
-    'cdes': cde or [],
+    'dataset': dataset or [],
+    'count': count or '0',
   }, indent=2)
