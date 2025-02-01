@@ -4,12 +4,14 @@ import dash_mantine_components as dmc
 
 count_select = html.Div(
   dmc.Select(
-    label='Count',
+    label='COUNT',
     placeholder='None selected',
+    checkIconPosition="right",
     id='count-select',
-    value='',
-    data=['1', '5', '10'],
+    value='5',
+    data=['5', '10', '50', '100', '1000'],
     mb=10,
+    variant='filled',
   )
 )
 

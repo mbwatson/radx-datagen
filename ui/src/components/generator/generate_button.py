@@ -1,25 +1,29 @@
-from dash import callback, ctx, dcc, html, Input, Output, State
+from dash import callback, ctx, dcc, Input, Output, State
 import dash_mantine_components as dmc
 from src.components.generator.fetchers import fetch_synthetic_data
+from dash_iconify import DashIconify
 import json
 
-generate_button = html.Button(
+generate_button = dmc.Button(
   "Generate",
+  leftSection=DashIconify(icon="feather:cpu"),
   id='generate-button',
   n_clicks=0,
-  style={'display': 'none'},
+  variant='light',
+  fullWidth=True,
+  disabled=True,
 )
 
 # toggle button visibility
 @callback(
-  Output('generate-button', 'style'),
-  Input('selected-dataset', 'data'),
-  Input('selected-count', 'data'),
+  Output('generate-button', 'disabled'),
+  Input('dataset-select', 'value'),
+  Input('count-select', 'value'),
 )
 def toggle_button_visibility(dataset, count):
-  if dataset and count:
-    return {'display': 'block'}
-  return {'display': 'none'}
+  if dataset is not None and count is not None:
+    return False
+  return True
 
 # fetch synthetic data, only when generate-button is clicked
 @callback(

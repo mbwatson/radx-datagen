@@ -22,19 +22,18 @@ app.layout = dmc.MantineProvider(
         generator_form,
         form_selections,
       ]),
-      dmc.AppShellMain([
-        html.Div('Synthetic Data:'),
+      dmc.AppShellMain(
         dcc.Loading(
           id="loading",
           type="circle",
           children=[generated_data]
-        )
-      ]),
+        ),
+      ),
     ],
     padding='md',
     id='app_shell',
     header={'height': 48},
-    navbar={'width': 400}
+    navbar={'width': 275}
   ),
 )
 

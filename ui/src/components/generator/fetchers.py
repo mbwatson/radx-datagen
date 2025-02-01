@@ -3,7 +3,7 @@ import json
 
 def fetch_datasets():
   try:
-    response = requests.get('http://api:8888/list_datasets')
+    response = requests.get('http://api:5000/list_datasets')
     response.raise_for_status()  # raise an HTTPError for bad responses (4xx and 5xx)
 
     # try to parse response as JSON
@@ -18,7 +18,7 @@ def fetch_datasets():
 
 def fetch_synthetic_data(dataset, count):
   try:
-    response = requests.get(f'http://api:8888/generate/{dataset}/{count}')
+    response = requests.get(f'http://api:5000/generate/{dataset}/{count}')
     response.raise_for_status()  # raise an HTTPError for bad responses (4xx and 5xx)
 
     try:

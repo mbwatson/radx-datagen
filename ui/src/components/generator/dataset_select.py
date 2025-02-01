@@ -5,11 +5,13 @@ from src.components.generator.fetchers import fetch_datasets
 
 dataset_select = html.Div([
   dmc.Select(
-    label='Collection',
+    label='DATASET',
     placeholder='None selected',
+    checkIconPosition="right",
     id='dataset-select',
     value='',
     data=[],
+    variant='filled',
     mb=10,
   ),
 ])
@@ -21,7 +23,7 @@ dataset_select = html.Div([
 )
 def update_select_options(_):
   available_datasets = fetch_datasets()
-  return [{'label': item['name'], 'value': item['name']} for item in available_datasets]
+  return [{'group': key, 'items': value} for key, value in available_datasets.items()]
 
 # store selected dataset
 @callback(

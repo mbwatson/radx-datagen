@@ -1,53 +1,41 @@
 import os
 from flask import Flask, jsonify, request
 from sdv.datasets import demo
-from sdv.single_table import GaussianCopulaSynthesizer
-from uuid import uuid4
+from generator import generate_synthetic_data
 
 app = Flask(__name__)
 
-available_demos = demo.get_available_demos(modality='single_table')
-available_datasets = [{
-    "name": record['dataset_name'],
-    "url": f"http://localhost:8888/generate/{record['dataset_name']}",
-} for record in available_demos.to_dict(orient='records')]
-
-# curl -X GET http://localhost:8888/
+# return available endpoints
 @app.route('/', methods=['GET'])
 def list_endpoints():
     endpoints = {
         "/": "This response.",
-        "/list_datasets": "List available datasets.",
-        "/generate/<string:dataset_name>/<int:count>": "Generate count records in dataset_name.",
+        "/list_datasets": "List of available datasets.",
+        "/generate/<string:dataset_name>/<int:count>": "Generate and list `count` number of records from `dataset_name`.",
     }
     return jsonify(endpoints), 200
 
-# curl -X GET http://localhost:8888/list_datasets
+# return available datasets
 @app.route('/list_datasets', methods=['GET'])
 def list_datasets():
-    return available_datasets, 200
+    demos = demo.get_available_demos(modality='single_table')
+    demo_datasets = [record['dataset_name'] for record in demos.to_dict(orient='records')]
+    custom_datasets = ['radx']
+    return jsonify({
+        "demo": demo_datasets,
+        "custom": custom_datasets,
+    }), 200
 
-# curl -X POST http://localhost:8888/generate -H "Content-Type: application/json" -d '{}'
+# return `count` many synthetic samples from `dataset`
 @app.route('/generate/<string:dataset_name>/<int:count>', methods=['GET'])
 def generate_data(dataset_name, count):
-    real_data, metadata = demo.download_demo(
-        modality='single_table',
-        dataset_name=dataset_name
-    )
-    synthesizer = GaussianCopulaSynthesizer(metadata)
-    synthesizer.fit(real_data)
-    synthetic_data = synthesizer.sample(num_rows=count)
+    return generate_synthetic_data(dataset_name, count)
 
-    # json_real_data = real_data.to_dict(orient='records')
-    json_synthetic_data = synthetic_data.to_dict(orient='records')
-
-    # return synthetic data
-    return jsonify(json_synthetic_data), 200
-
-# curl -X POST http://localhost:8888/generate -H "Content-Type: application/json" -d '{}'
+# just like above route, but `count` can be ommitted; defaults to `default_count`.
+default_count = 10
 @app.route('/generate/<string:dataset_name>', methods=['GET'])
 def generate_data_no_count(dataset_name):
-    return generate_data(dataset_name, 10)
+    return generate_data(dataset_name, default_count)
 
 if __name__ == '__main__':
    app.run(debug=True, host='0.0.0.0')

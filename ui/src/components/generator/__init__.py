@@ -1,13 +1,15 @@
 from dash import callback, dcc, html, Input, Output
 import dash_mantine_components as dmc
-import json
-import pandas
-import requests
+
 from .dataset_select import dataset_select
-from .form_selections import form_selections
 from .count_select import count_select
 from .generate_button import generate_button
-from .generated_data import generated_data
+
+horizontal_rule = html.Div(style={
+  'border-top': '0.5px solid var(--mantine-color-default-border)',
+  'margin-top': '1rem',
+  'height': '1rem',
+})
 
 generator_form = dmc.Container(
   [
@@ -16,26 +18,23 @@ generator_form = dmc.Container(
       children=[
         dataset_select,
         count_select,
+        horizontal_rule,
         generate_button,
       ],
       variant='transparent',
+      style={
+        'margin': '1rem 0 0 0',
+        'width': '100%',
+        'border': '1px solid var(--mantine-color-default-border)',
+      },
     ),
     dcc.Store(id='available-datasets'),
     dcc.Store(id='selected-dataset'),
     dcc.Store(id='selected-count'),
   ],
   fluid=True,
-  style={'margin': '1rem 0 0 0'},
+  style={ 'width': '100%' },
 )
 
-# update selection summary
-@callback(
-  Output('state-summary', 'children'),
-  Input('selected-dataset', 'data'),
-  Input('selected-count', 'data'),
-)
-def update_selection_summary(dataset, count):
-  return json.dumps({
-    'dataset': dataset or [],
-    'count': count or '0',
-  }, indent=2)
+from .form_selections import form_selections
+from .generated_data import generated_data

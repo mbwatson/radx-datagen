@@ -1,0 +1,21 @@
+{
+    "METADATA_SPEC_VERSION": "V1",
+    "tables": {
+        "radx": {  
+            "columns": {
+                "first_name": {
+                    "sdtype": "first_name"
+                },
+                "last_name": {
+                    "sdtype": "last_name"
+                },
+                "age": {
+                    "sdtype": "numerical"
+                },
+                "has_disease_x": {
+                    "sdtype": "boolean"
+                }
+            }
+        }
+    }
+}
