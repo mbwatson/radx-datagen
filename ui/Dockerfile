@@ -1,23 +1,24 @@
 FROM python:3.12
 
-WORKDIR /app/ui
+WORKDIR /app
 
-# copy requirements files
-COPY Pipfile Pipfile.lock .
+# Copy the requirements file into the container
+COPY requirements.txt .
 
-# install dependencies
-RUN pip install pipenv && pipenv install --deploy --ignore-pipfile
+# Install dependencies using pip
+RUN pip install --no-cache-dir -r requirements.txt
 
-# copy in application files
+# Copy your application files into the container
 COPY . .
 
-EXPOSE 8855
+# Expose the necessary port
+EXPOSE ${UI_PORT}
 
-# environment variables
-ENV FLASK_APP=app.py
+# Environment variables
+ENV FLASK_APP=api.py
 ENV FLASK_RUN_HOST=0.0.0.0
-ENV FLASK_RUN_PORT=$API_PORT
-ENV FLASK_ENV=$API_ENV
+ENV FLASK_RUN_PORT=${API_PORT}
+ENV FLASK_ENV=${API_ENV}
 
-# go!
-CMD ["pipenv", "run", "flask", "run"]
+# Start the Flask app
+CMD ["python", "-m", "flask", "run"]

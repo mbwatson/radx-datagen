@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, request
 from sdv.datasets import demo
 from sdv.single_table import GaussianCopulaSynthesizer
@@ -49,4 +50,4 @@ def generate_data_no_count(dataset_name):
     return generate_data(dataset_name, 10)
 
 if __name__ == '__main__':
-   app.run(debug=True, host='0.0.0.0', port=8888)
+   app.run(debug=True)

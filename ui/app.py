@@ -1,3 +1,4 @@
+import os
 from dash import _dash_renderer, callback, Dash, dcc, html, Input, Output, State
 import dash_mantine_components as dmc
 from src.theme import DEFAULT_THEME
@@ -31,4 +32,4 @@ app.layout = dmc.MantineProvider(
 server = app.server
 
 if __name__ == '__main__':
-  app.run_server(port=8855, debug=True)
+  app.run_server(debug=True)
