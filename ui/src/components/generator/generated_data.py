@@ -2,6 +2,7 @@ from dash import callback, html, Input, Output
 import dash_mantine_components as dmc
 import dash_ag_grid as dag
 from dash_iconify import DashIconify
+from datetime import datetime
 
 download_button = dmc.Tooltip(
   label='Download as CSV',
@@ -48,7 +49,7 @@ data_grid = dag.AgGrid(
     'height': 'calc(100vh - var(--app-shell-header-height) - 2*var(--mantine-spacing-md) - 4rem)',
     'width': '100%',
   },
-  csvExportParams={'fileName': 'radx-datagen.csv', 'prependContent': 'Help'},
+  csvExportParams={'fileName': 'radx-datagen.csv'},
 )
 
 
@@ -73,10 +74,13 @@ def align_chart_theme(theme):
 
 # export table data as csv on export button click
 @callback(
+  Output('synthetic-data-table', 'csvExportParams'),
   Output('synthetic-data-table', 'exportDataAsCsv'),
   Input('download-button', 'n_clicks'),
 )
 def export_data_as_csv(n_clicks):
   if n_clicks:
-    return True
-  return False
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    filename = f'radx-datagen_{timestamp}.csv'
+    return {'fileName': filename}, True
+  return {'fileName': 'radx-datagen.csv'}, False
