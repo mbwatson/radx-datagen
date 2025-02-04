@@ -6,8 +6,8 @@ from .count_select import count_select
 from .generate_button import generate_button
 
 horizontal_rule = html.Div(style={
-  'border-top': '0.5px solid var(--mantine-color-default-border)',
-  'margin-top': '1rem',
+  'borderTop': '0.5px solid var(--mantine-color-default-border)',
+  'marginTop': '1rem',
   'height': '1rem',
 })
 
@@ -37,4 +37,4 @@ generator_form = dmc.Container(
 )
 
 from .form_selections import form_selections
-from .generated_data import generated_data
+from .data_table import data_table

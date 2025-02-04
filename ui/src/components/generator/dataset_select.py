@@ -1,7 +1,7 @@
 from dash import Output, Input, html, callback
 import dash_mantine_components as dmc
 
-from src.components.generator.fetchers import fetch_datasets
+from src.util.fetchers import fetch_datasets
 
 dataset_select = html.Div([
     dmc.Select(
@@ -14,7 +14,7 @@ dataset_select = html.Div([
         required=True,
         variant='filled',
         mb=10,
-        labelProps={'style': {'font-size': '75%'}},
+        labelProps={'style': {'fontSize': '75%'}},
         comboboxProps={'transitionProps': {'transition': 'pop'}},
     ),
 ])

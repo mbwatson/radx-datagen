@@ -1,6 +1,6 @@
 from dash import callback, ctx, dcc, Input, Output, State
 import dash_mantine_components as dmc
-from src.components.generator.fetchers import fetch_synthetic_data
+from src.util.fetchers import fetch_synthetic_data
 from dash_iconify import DashIconify
 import json
 
