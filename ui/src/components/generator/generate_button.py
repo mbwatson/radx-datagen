@@ -5,8 +5,8 @@ from dash_iconify import DashIconify
 import json
 
 generate_button = dmc.Button(
-  "Generate",
-  leftSection=DashIconify(icon="feather:cpu"),
+  'Generate',
+  leftSection=DashIconify(icon='feather:cpu'),
   id='generate-button',
   n_clicks=0,
   variant='light',
@@ -41,16 +41,18 @@ def fetch_data(n_clicks, dataset, count):
     return []
 
   try:
-    data = fetch_synthetic_data(dataset, count)
+    synthetic_data = fetch_synthetic_data(dataset, count)
+
+    data = synthetic_data['data']
     
     # validate response format for AG Grid
     if isinstance(data, list) and all(isinstance(row, dict) for row in data):
       return data
 
-    return [{"error": "Unexpected data format received from API"}]
+    return [{'error': 'Unexpected data format received from API'}]
 
   except Exception as e:
-    return [{"error": str(e)}]  # Return error in a format AG Grid can display
+    return [{'error': str(e)}]  # Return error in a format AG Grid can display
 
 @callback(
   Output('synthetic-data-table', 'columnDefs'),
@@ -63,5 +65,5 @@ def update_columns(n_clicks, row_data):
     return []
   
   # define columns dynamically
-  columns = [{"field": key} for key in row_data[0].keys()]
+  columns = [{'field': key} for key in row_data[0].keys()]
   return columns

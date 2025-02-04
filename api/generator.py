@@ -33,4 +33,7 @@ def generate_synthetic_data(dataset_name, count):
     json_synthetic_data = synthetic_data.to_dict(orient='records')
 
     # return synthetic data
-    return jsonify(json_synthetic_data), 200
+    return jsonify({
+        'data': json_synthetic_data,
+        'diagnostics': 'coming soon...',
+    }), 200
