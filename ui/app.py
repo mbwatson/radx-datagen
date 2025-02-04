@@ -24,8 +24,8 @@ app.layout = dmc.MantineProvider(
       ]),
       dmc.AppShellMain(
         dcc.Loading(
-          id="loading",
-          type="circle",
+          id='loading',
+          type='circle',
           children=[generated_data]
         ),
       ),

@@ -10,8 +10,10 @@ count_select = html.Div(
     id='count-select',
     value='5',
     data=['5', '10', '50', '100', '1000'],
+    required=True,
     mb=10,
     variant='filled',
+    labelProps={'style': {'font-size': '75%'} }
   )
 )
 

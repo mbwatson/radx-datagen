@@ -1,17 +1,57 @@
 from dash import callback, html, Input, Output
+import dash_mantine_components as dmc
 import dash_ag_grid as dag
+from dash_iconify import DashIconify
 
-generated_data = dag.AgGrid(
-  id='synthetic-data-table',
-  columnDefs=[{"field": "key"}, {"field": "value"}],
-  rowData=[],
-  dashGridOptions={"domLayout": "normal"},
-  style={
-    "height": "calc(100vh - var(--app-shell-header-height) - 2*var(--mantine-spacing-md) - 10px)",
-    "margin-top": "10px",
-    "width": "100%",
-  }
+
+download_button = dmc.Tooltip(
+  label='Download as CSV',
+  position='bottom-end',
+  offset=3,
+  withArrow=True,
+  arrowSize=8,
+  arrowOffset=21,
+  transitionProps={
+    'transition': 'slide-up', 
+    'duration': 200,
+    'timingFunction': 'ease'
+  },
+  children=dmc.Button(
+    DashIconify(icon='feather:download-cloud'),
+    id='download-button',
+    variant='light',
+    size='xs',
+    n_clicks=0,
+  )
 )
+
+data_grid_toolbar = dmc.Paper(
+  [download_button],
+  style={
+    'display': 'flex',
+    'justify-content': 'flex-end',
+    'margin': '10px 0 1rem 0',
+  },
+  withBorder=True,
+)
+
+data_grid = dag.AgGrid(
+  id='synthetic-data-table',
+  columnDefs=[{'field': 'key'}, {'field': 'value'}],
+  rowData=[],
+  dashGridOptions={'domLayout': 'normal'},
+  style={
+    'height': 'calc(100vh - var(--app-shell-header-height) - 2*var(--mantine-spacing-md) - 4rem)',
+    'width': '100%',
+  },
+  csvExportParams={'fileName': 'radx-datagen.csv', 'prependContent': 'Help'},
+)
+
+
+generated_data = html.Div([
+  data_grid_toolbar,
+  data_grid,
+])
 
 # data table light and dark theme classes
 grid_class = {
@@ -26,3 +66,13 @@ grid_class = {
 )
 def align_chart_theme(theme):
   return grid_class[theme]
+
+# export table data as csv on export button click
+@callback(
+  Output('synthetic-data-table', 'exportDataAsCsv'),
+  Input('download-button', 'n_clicks'),
+)
+def export_data_as_csv(n_clicks):
+  if n_clicks:
+    return True
+  return False
