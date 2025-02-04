@@ -14,7 +14,7 @@ dataset_select = html.Div([
         required=True,
         variant='filled',
         mb=10,
-        labelProps={'style': {'font-size': '75%'}},
+        labelProps={'style': {'fontSize': '75%'}},
         comboboxProps={'transitionProps': {'transition': 'pop'}},
     ),
 ])

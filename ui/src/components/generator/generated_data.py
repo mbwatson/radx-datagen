@@ -33,7 +33,7 @@ data_grid_toolbar = dmc.Paper(
   ),
   style={
     'display': 'flex',
-    'justify-content': 'flex-end',
+    'justifyContent': 'flex-end',
     'margin': 'calc(var(--mantine-spacing-sm) / 2) 0 var(--mantine-spacing-sm) 0',
     'padding': '4px'
   },

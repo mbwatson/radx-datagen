@@ -13,7 +13,7 @@ count_select = html.Div(
     required=True,
     mb=10,
     variant='filled',
-    labelProps={'style': {'font-size': '75%'} }
+    labelProps={'style': {'fontSize': '75%'} }
   )
 )
 

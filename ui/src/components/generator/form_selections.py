@@ -9,7 +9,7 @@ form_selections = dmc.Code(
     'margin': 'var(--mantine-spacing-md)',
     'padding': 'var(--mantine-spacing-sm)',
     'border': '1px solid var(--mantine-color-default-border)',
-    'font-size': '60%',
+    'fontSize': '60%',
   },
   block=True,
   variant='outlined',
