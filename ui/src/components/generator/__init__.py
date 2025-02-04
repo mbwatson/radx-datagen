@@ -23,7 +23,7 @@ generator_form = dmc.Container(
       ],
       variant='transparent',
       style={
-        'margin': '1rem 0 0 0',
+        'margin': 'var(--mantine-spacing-sm) 0 0 0',
         'width': '100%',
         'border': '1px solid var(--mantine-color-default-border)',
       },

@@ -3,7 +3,6 @@ import dash_mantine_components as dmc
 import dash_ag_grid as dag
 from dash_iconify import DashIconify
 
-
 download_button = dmc.Tooltip(
   label='Download as CSV',
   position='bottom-end',
@@ -13,7 +12,7 @@ download_button = dmc.Tooltip(
   arrowOffset=21,
   transitionProps={
     'transition': 'slide-up', 
-    'duration': 200,
+    'duration': 100,
     'timingFunction': 'ease'
   },
   children=dmc.Button(
@@ -26,11 +25,16 @@ download_button = dmc.Tooltip(
 )
 
 data_grid_toolbar = dmc.Paper(
-  [download_button],
+  dmc.Group(
+    grow=True,
+    wrap="nowrap",
+    children=[download_button],
+  ),
   style={
     'display': 'flex',
     'justify-content': 'flex-end',
-    'margin': '10px 0 1rem 0',
+    'margin': 'calc(var(--mantine-spacing-sm) / 2) 0 var(--mantine-spacing-sm) 0',
+    'padding': '4px'
   },
   withBorder=True,
 )

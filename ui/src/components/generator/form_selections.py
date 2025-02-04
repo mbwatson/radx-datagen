@@ -6,8 +6,8 @@ form_selections = dmc.Code(
   id='state-summary',
   style={
     'whiteSpace': 'pre-wrap',
-    'margin': '1rem',
-    'padding': '1rem',
+    'margin': 'var(--mantine-spacing-md)',
+    'padding': 'var(--mantine-spacing-sm)',
     'border': '1px solid var(--mantine-color-default-border)',
     'font-size': '60%',
   },
