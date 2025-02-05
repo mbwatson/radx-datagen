@@ -31,6 +31,7 @@ generator_form = dmc.Container(
     dcc.Store(id='available-datasets'),
     dcc.Store(id='selected-dataset'),
     dcc.Store(id='selected-count'),
+    dcc.Store(id='diagnostics-store'),
   ],
   fluid=True,
   style={ 'width': '100%' },
