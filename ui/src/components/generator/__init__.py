@@ -3,6 +3,7 @@ import dash_mantine_components as dmc
 
 from .dataset_select import dataset_select
 from .count_select import count_select
+from .download_button import download_button
 from .generate_button import generate_button
 
 horizontal_rule = html.Div(style={
@@ -19,7 +20,7 @@ generator_form = dmc.Container(
         dataset_select,
         count_select,
         horizontal_rule,
-        generate_button,
+        dmc.Group([generate_button, download_button]),
       ],
       variant='transparent',
       style={
@@ -37,5 +38,6 @@ generator_form = dmc.Container(
   style={ 'width': '100%' },
 )
 
-from .form_selections import form_selections
 from .data_table import data_table
+from .diagnostics_report import diagnostics_report
+from .form_selections import form_selections

@@ -14,17 +14,17 @@ generate_button = dmc.Button(
   id='generate-button',
   n_clicks=0,
   variant='light',
-  fullWidth=True,
   disabled=True,
+  style={'flex': '1'},
 )
 
-# Toggle button visibility
+# Toggle button enabled or disabled
 @callback(
   Output('generate-button', 'disabled'),
   Input('dataset-select', 'value'),
   Input('count-select', 'value'),
 )
-def toggle_button_visibility(dataset, count):
+def toggle_button_enabled_state(dataset, count):
   # Ensure both dataset and count are provided to enable the button
   return dataset is None or count is None
 

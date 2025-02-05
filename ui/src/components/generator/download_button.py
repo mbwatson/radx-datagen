@@ -3,26 +3,22 @@ import dash_mantine_components as dmc
 from dash_iconify import DashIconify
 from datetime import datetime
 
-download_button = dmc.Tooltip(
-  label='Download as CSV',
-  position='top',
-  offset=3,
-  withArrow=True,
-  arrowSize=8,
-  arrowOffset=21,
-  transitionProps={
-    'transition': 'fade', 
-    'duration': 100,
-    'timingFunction': 'ease'
-  },
-  children=dmc.Button(
-    DashIconify(icon='feather:download-cloud'),
-    id='download-button',
-    variant='light',
-    size='xs',
-    n_clicks=0,
-  )
+download_button = dmc.Button(
+  DashIconify(icon='feather:download-cloud'),
+  id='download-button',
+  variant='light',
+  disabled=True,
+  n_clicks=0,
 )
+
+# Toggle button enabled or disabled
+@callback(
+  Output('download-button', 'disabled'),
+  Input('synthetic-data-table', 'rowData'),
+  prevent_initial_call=True,
+)
+def toggle_button_enabled_state(data):
+  return not bool(data)
 
 # export table data as csv on export button click
 @callback(

@@ -3,9 +3,10 @@ from dash import _dash_renderer, callback, Dash, dcc, html, Input, Output, State
 import dash_mantine_components as dmc
 from src.theme import DEFAULT_THEME
 from src.components.header import header
+from src.components.generator import data_table
+from src.components.generator import diagnostics_report
 from src.components.generator import generator_form
 from src.components.generator import form_selections
-from src.components.generator import data_table
 import json
 
 _dash_renderer._set_react_version('18.2.0')
@@ -21,6 +22,7 @@ app.layout = dmc.MantineProvider(
       dmc.AppShellNavbar([
         generator_form,
         form_selections,
+        diagnostics_report,
       ]),
       dmc.AppShellMain(
         dcc.Loading(
