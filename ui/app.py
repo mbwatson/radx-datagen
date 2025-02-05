@@ -5,7 +5,7 @@ from src.theme import DEFAULT_THEME
 from src.components.header import header
 from src.components.generator import generator_form
 from src.components.generator import form_selections
-from src.components.generator import generated_data
+from src.components.generator import data_table
 import json
 
 _dash_renderer._set_react_version('18.2.0')
@@ -26,7 +26,7 @@ app.layout = dmc.MantineProvider(
         dcc.Loading(
           id='loading',
           type='circle',
-          children=[generated_data]
+          children=[data_table]
         ),
       ),
     ],

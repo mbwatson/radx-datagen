@@ -37,4 +37,4 @@ generator_form = dmc.Container(
 )
 
 from .form_selections import form_selections
-from .generated_data import generated_data
+from .data_table import data_table
