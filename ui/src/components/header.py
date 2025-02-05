@@ -11,12 +11,16 @@ github_link = dmc.Anchor(
   id="github-link",
   href="https://github.com/mbwatson/radx-datagen",
   target="_blank",
+  style={'display': 'flex'},
 )
 
 header = dmc.Flex(
   children=[
     app_logo,
-    dmc.Group([github_link, theme_toggle]),
+    dmc.Group(
+      [github_link, theme_toggle],
+      style={'alignItems': 'center'}
+    ),
   ],
   justify="space-between",
   align="center",

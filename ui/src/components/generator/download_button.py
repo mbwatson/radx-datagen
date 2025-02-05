@@ -11,7 +11,7 @@ download_button = dmc.Tooltip(
   arrowSize=8,
   arrowOffset=21,
   transitionProps={
-    'transition': 'slide-up', 
+    'transition': 'fade', 
     'duration': 100,
     'timingFunction': 'ease'
   },
