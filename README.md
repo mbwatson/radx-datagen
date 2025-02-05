@@ -42,11 +42,11 @@ ChatGPT was given this prompt:
 
 The distribution of `has_disease_x` is summarized in the following table.
 
-|        | `age < 60` | `60 ≤ age` |  has_disease_x  |
-| -----: | :--------: | :--------: | :-------------: |
-|        |     50     |    450     |      `True`     |
-|        |    450     |     50     |     `False`     |
-|  total |    500     |    500     |                 |
+|                       | `age < 60` | `60 ≤ age` |
+| --------------------: | :--------: | :--------: |
+|  `has_disease_x=True` |     50     |    450     |
+| `has_disease_x=False` |    450     |     50     |
+|                 total |    500     |    500     |
 
 The API utilizes this
 [data](https://github.com/mbwatson/radx-datagen/blob/dev/api/data/real_data.csv),
