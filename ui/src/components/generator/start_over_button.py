@@ -4,7 +4,7 @@ from dash_iconify import DashIconify
 from datetime import datetime
 
 start_over_button = dmc.Button(
-  DashIconify(icon='feather:rotate-ccw'),
+  DashIconify(icon='mingcute:eraser-line'),
   id='start-over-button',
   variant='light',
   n_clicks=0,

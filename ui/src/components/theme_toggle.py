@@ -11,8 +11,8 @@ theme_persistence = dcc.Store(
 theme_toggle = dmc.ActionIcon(
   [
     theme_persistence,
-    dmc.Box(DashIconify(icon='feather:moon', width=24, height=24), darkHidden=True),
-    dmc.Box(DashIconify(icon='feather:sun', width=24, height=24), lightHidden=True),
+    dmc.Box(DashIconify(icon='mingcute:moon-stars-fill', width=24, height=24), darkHidden=True),
+    dmc.Box(DashIconify(icon='mingcute:sun-line', width=24, height=24), lightHidden=True),
   ],
   variant='transparent',
   color='goldenrod',

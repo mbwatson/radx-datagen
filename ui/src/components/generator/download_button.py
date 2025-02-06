@@ -4,7 +4,7 @@ from dash_iconify import DashIconify
 from datetime import datetime
 
 download_button = dmc.Button(
-  DashIconify(icon='feather:download-cloud'),
+  DashIconify(icon='mingcute:download-2-line'),
   id='download-button',
   variant='light',
   n_clicks=0,

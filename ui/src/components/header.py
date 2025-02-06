@@ -6,7 +6,7 @@ from src.components.theme_toggle import theme_toggle
 app_logo = dmc.Anchor("RADx Synthetic Data Generator", href="/")
 
 github_link = dmc.Anchor(
-  DashIconify(icon="feather:github", width=20, color="var(--mantine-color-text)"),
+  DashIconify(icon="mingcute:github-line", width=20, color="var(--mantine-color-text)"),
   variant="transparent",
   id="github-link",
   href="https://github.com/mbwatson/radx-datagen",

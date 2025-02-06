@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 generate_button = dmc.Button(
   'Generate',
-  leftSection=DashIconify(icon='feather:cpu'),
+  leftSection=DashIconify(icon='mingcute:ai-line'),
   id='generate-button',
   n_clicks=0,
   variant='light',
