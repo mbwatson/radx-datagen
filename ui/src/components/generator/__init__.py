@@ -44,7 +44,6 @@ generator_form = dmc.Container(
         'border': '1px solid var(--mantine-color-default-border)',
       },
     ),
-    dcc.Store(id='available-datasets'),
     dcc.Store(id='selected-dataset'),
     dcc.Store(id='selected-count'),
     synthetic_data_store,

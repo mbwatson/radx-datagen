@@ -7,8 +7,8 @@ data_table = dag.AgGrid(
   rowData=[],
   dashGridOptions={'domLayout': 'normal'},
   style={
-    'margin': 'var(--mantine-spacing-xs) 0 0 0',
-    'height': 'calc(100vh - var(--app-shell-header-height) - 5 * var(--mantine-spacing-xs))',
+    'margin': '0',
+    'height': 'calc(100vh - 4 * var(--mantine-spacing-xs))',
     'width': '100%',
   },
   csvExportParams={'fileName': 'radx-datagen.csv'},
