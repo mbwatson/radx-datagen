@@ -1,4 +1,4 @@
-from dash import Output, Input, html, callback
+from dash import callback, html, Output, Input
 import dash_mantine_components as dmc
 
 from src.util.fetchers import fetch_datasets
@@ -19,7 +19,6 @@ dataset_select = html.Div([
     ),
 ])
 
-
 @callback(
     Output('dataset-select', 'data'),
     Input('dataset-select', 'id'),
@@ -30,10 +29,10 @@ def update_select_options(_):
     return [{'group': key, 'items': value} for key, value in available_datasets.items()]
 
 
+# store selected dataset
 @callback(
     Output('selected-dataset', 'data'),
     Input('dataset-select', 'value'),
 )
 def select_dataset(value):
-    """Store the selected dataset."""
     return f'{value}'

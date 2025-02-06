@@ -1,53 +1,41 @@
-from dash import callback, html, Input, Output
-import dash_mantine_components as dmc
+from dash import callback, Input, Output
 import dash_ag_grid as dag
-from dash_iconify import DashIconify
-from datetime import datetime
-from .download_button import download_button
 
-data_grid_toolbar = dmc.Paper(
-  dmc.Group(
-    grow=True,
-    wrap="nowrap",
-    children=[download_button],
-  ),
-  style={
-    'display': 'flex',
-    'justifyContent': 'flex-end',
-    'margin': 'calc(var(--mantine-spacing-sm) / 2) 0 var(--mantine-spacing-sm) 0',
-    'padding': '4px'
-  },
-  withBorder=True,
-)
-
-data_grid = dag.AgGrid(
+data_table = dag.AgGrid(
   id='synthetic-data-table',
   columnDefs=[{'field': 'key'}, {'field': 'value'}],
   rowData=[],
   dashGridOptions={'domLayout': 'normal'},
   style={
-    'height': 'calc(100vh - var(--app-shell-header-height) - 2*var(--mantine-spacing-md) - 4rem)',
+    'marginTop': 'var(--mantine-spacing-xs)',
+    'height': 'calc(100vh - var(--app-shell-header-height) - 2*var(--mantine-spacing-lg))',
     'width': '100%',
   },
   csvExportParams={'fileName': 'radx-datagen.csv'},
 )
 
-
-data_table = html.Div([
-  data_grid_toolbar,
-  data_grid,
-])
-
 # data table light and dark theme classes
-grid_class = {
+table_class = {
   'light': 'ag-theme-balham',
   'dark': 'ag-theme-balham-dark',
 }
 
-# align chart and table styles with current color scheme setting
+# update table from store
+@callback(
+  Output('synthetic-data-table', 'columnDefs'),
+  Output('synthetic-data-table', 'rowData'),
+  Input('synthetic-data-store', 'data'),
+)
+def update_table(synthetic_data_store):
+  data = synthetic_data_store.get('data', [])
+  if not data:
+    return [], []
+  return [{'field': key} for key in data[0].keys()], data
+
+# align table style with current color scheme setting
 @callback(
   Output('synthetic-data-table', 'className'),
   Input('theme-store', 'data'),
 )
-def align_chart_theme(theme):
-  return grid_class[theme]
+def align_table_theme(theme):
+  return table_class[theme]

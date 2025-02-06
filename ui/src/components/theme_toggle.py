@@ -1,4 +1,4 @@
-from dash import ctx, Dash, dcc, Input, Output, State, callback, _dash_renderer
+from dash import callback, ctx, dcc, Input, Output
 import dash_mantine_components as dmc
 from dash_iconify import DashIconify
 

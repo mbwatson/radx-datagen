@@ -22,7 +22,7 @@ form_selections = dmc.Code(
   Input('selected-count', 'data'),
 )
 def update_selection_summary(dataset, count):
-  return json.dumps({
+  return 'FORM_STATE = ' + json.dumps({
     'DATASET': dataset or [],
     'COUNT': count or '0',
   }, indent=2)

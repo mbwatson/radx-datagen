@@ -1,27 +1,13 @@
-from dash import callback, html, Input, Output
+from dash import callback, Input, Output
 import dash_mantine_components as dmc
 from dash_iconify import DashIconify
 from datetime import datetime
 
-download_button = dmc.Tooltip(
-  label='Download as CSV',
-  position='top',
-  offset=3,
-  withArrow=True,
-  arrowSize=8,
-  arrowOffset=21,
-  transitionProps={
-    'transition': 'fade', 
-    'duration': 100,
-    'timingFunction': 'ease'
-  },
-  children=dmc.Button(
-    DashIconify(icon='feather:download-cloud'),
-    id='download-button',
-    variant='light',
-    size='xs',
-    n_clicks=0,
-  )
+download_button = dmc.Button(
+  DashIconify(icon='feather:download-cloud'),
+  id='download-button',
+  variant='light',
+  n_clicks=0,
 )
 
 # export table data as csv on export button click
