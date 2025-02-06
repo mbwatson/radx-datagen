@@ -28,7 +28,7 @@ app.layout = dmc.MantineProvider(
           ])
           ],
           justify='space-between',
-          style={'height': '100%'},
+          style={'height': 'calc(100vh - var(--app-shell-header-height) - var(--mantine-spacing-xs))'},
         )
       ),
       dmc.AppShellMain(
