@@ -1,0 +1,24 @@
+.footer-tabs {
+  position: relative;
+  border: 0 !important;
+  background-color: light-dark(var(--mantine-color-body), var(--mantine-color-body));
+
+  &.mantine-Tabs-tab {
+    border-radius: 0 !important;
+  }
+
+  &:hover {
+    background-color: light-dark(var(--mantine-primary-color-light-hover), var(--mantine-primary-color-dark-hover));
+  }
+
+  &[data-active] {
+    z-index: 1;
+    background-color: var(--mantine-primary-color-light-hover);
+    border-color: var(--mantine-color-default-border);
+    color: var(--mantine-color-text);
+
+    &:hover {
+      background-color: 'color-mix(in srgb, var(--mantine-primary-color-light-hover), var(--mantine-primary-color-contrast) 10%)';
+    }
+  }
+}

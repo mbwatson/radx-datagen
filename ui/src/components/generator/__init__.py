@@ -63,5 +63,3 @@ def toggle_button_visibility(data):
   return {'display': 'block'}
 
 from .data_table import data_table
-from .diagnostics_report import diagnostics_report
-from .form_selections import form_selections

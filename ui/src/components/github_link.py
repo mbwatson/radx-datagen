@@ -7,5 +7,5 @@ github_link = dmc.Anchor(
   id='github-link',
   href='https://github.com/mbwatson/radx-datagen',
   target='_blank',
-  style={'display': 'flex'},
+  style={'display': 'flex', 'padding': '7px'},
 )

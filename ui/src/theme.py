@@ -22,7 +22,7 @@ DEFAULT_THEME = {
     "orange": ["#fff4e6", "#ffe8cc", "#ffd8a8", "#ffc078", "#ffa94d", "#ff922b", "#fd7e14", "#f76707", "#e8590c", "#d9480f"],
   },
   "primaryShade": {"light": 6, "dark": 8},
-  "primaryColor": "teal",
+  "primaryColor": "blue",
   "autoContrast": False,
   "luminanceThreshold": 0.3,
   "fontFamily": "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji",
