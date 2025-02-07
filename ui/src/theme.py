@@ -29,7 +29,7 @@ DEFAULT_THEME = {
   "fontFamilyMonospace": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
   "respectReducedMotion": False,
   "cursorType": "default",
-  "defaultGradient": {"from": "blue", "to": "cyan", "deg": 45},
+  "defaultGradient": {"from": "indigo", "to": "cyan", "deg": 45},
   "defaultRadius": "sm",
   "activeClassName": "mantine-active",
   "focusClassName": "",
