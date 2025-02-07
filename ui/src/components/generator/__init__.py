@@ -23,7 +23,7 @@ data_action_buttons = html.Div([
     ],
     grow=True,
   )],
-  id='data-button-container',
+  id='action-buttons',
 )
 
 generator_form = dmc.Container(
@@ -54,7 +54,7 @@ generator_form = dmc.Container(
 
 # toggle button visibility
 @callback(
-  Output('data-button-container', 'style'),
+  Output('action-buttons', 'style'),
   Input('synthetic-data-table', 'rowData'),
 )
 def toggle_button_visibility(data):
