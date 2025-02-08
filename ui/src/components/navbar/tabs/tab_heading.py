@@ -8,7 +8,8 @@ def tab_heading(title):
     title,
     size='xs',
     style={
+      'textAlign': 'center',
+      'padding': '4px var(--mantine-spacing-md)',
       'backgroundColor': 'var(--mantine-primary-color-light-hover)',
-      'padding': 'var(--mantine-spacing-xs)',
     }
   )

@@ -11,7 +11,6 @@ debug_tab = dmc.Box([
     style={
       'whiteSpace': 'pre-wrap',
       'padding': 'var(--mantine-spacing-sm)',
-      'border': '1px solid var(--mantine-color-default-border)',
       'fontSize': '60%',
       'borderRadius': '0',
       'backgroundColor': 'transparent',

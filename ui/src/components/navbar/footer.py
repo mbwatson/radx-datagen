@@ -24,7 +24,7 @@ footer_tabs = dmc.Tabs(
     id='footer-tabs',
     value=None,
     allowTabDeactivation=True,
-    classNames={'tab': 'footer-tabs'},
+    classNames={'tab': 'footer-tab'},
 )
 
 navbar_footer = dmc.Paper(

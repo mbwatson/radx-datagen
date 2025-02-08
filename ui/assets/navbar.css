@@ -1,4 +1,4 @@
-.footer-tabs {
+.footer-tab {
   position: relative;
   border: 0 !important;
   background-color: light-dark(var(--mantine-color-body), var(--mantine-color-body));
